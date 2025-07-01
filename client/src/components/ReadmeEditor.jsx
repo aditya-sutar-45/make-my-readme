@@ -16,7 +16,7 @@ function ReadmeEditor({ markdown, setMarkdown }) {
     <>
       <div className="navbar bg-primary flex justify-between shadow-sm h-15">
         <fieldset className="fieldset">
-          <legend className="fieldset-label">
+          <legend className="fieldset-label text-base text-white">
             {isPreview ? "Preview" : "Editor"}
           </legend>
           <label className="toggle toggle-accent text-base-content">
@@ -28,7 +28,7 @@ function ReadmeEditor({ markdown, setMarkdown }) {
         <ThemeController />
         {/* <h1 className="text-xl">{isPreview ? "Preview" : "Editor"}</h1> */}
       </div>
-      <div>
+      <div className="w-[90%] mx-auto">
         {isPreview ? (
           <MarkdowPreview markdown={markdown} />
         ) : (
