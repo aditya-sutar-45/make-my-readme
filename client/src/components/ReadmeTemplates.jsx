@@ -24,24 +24,26 @@ function ReadmeTemplate() {
 
   return (
     <>
-      <div className="navbar bg-primary shadow-sm h-15">
+      <div className="navbar bg-primary flex justify-between shadow-sm h-15">
         <h1 className="text-xl">Templates</h1>
       </div>
-      <div className="m-2 h-[40vh]">
-        <label className="input input-ghost w-full my-2 flex items-center">
-          <Search size={16} />
-          <input
-            type="search"
-            className="grow"
-            placeholder="Search"
-            style={{ width: "100%" }}
-          />
-        </label>
-        {visibleSections.map((sec, index) => (
-          <button key={index} className="btn my-1 w-full btn-dash">
-            {sec.name}
-          </button>
-        ))}
+      <div className="m-2 h-[50vh]">
+        <div className="h-4/5">
+          <label className="input input-ghost w-full my-2 flex items-center">
+            <Search size={16} />
+            <input
+              type="search"
+              className="grow"
+              placeholder="Search"
+              style={{ width: "100%" }}
+            />
+          </label>
+          {visibleSections.map((sec, index) => (
+            <button key={index} className="btn my-1 w-full btn-dash">
+              {sec.name}
+            </button>
+          ))}
+        </div>
         <div className="join flex justify-center mt-2">
           <button
             onClick={subPage}
