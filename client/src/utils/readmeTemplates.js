@@ -232,3 +232,11 @@ function sayHello(name) {
 `,
   },
 ];
+
+const tags = [];
+for (const section of readmeSections) {
+  if (!tags.includes(section.tag)) {
+    tags.push(section.tag);
+  }
+}
+export const readmeTags = tags;

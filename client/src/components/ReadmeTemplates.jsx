@@ -1,16 +1,22 @@
 import { useState } from "react";
 import { ArrowLeft, ArrowRight, Search } from "lucide-react";
-import { readmeSections } from "../utils/readmeTemplates";
+import { readmeSections, readmeTags } from "../utils/readmeTemplates";
 
 const ITEMS_PER_PAGE = 6;
 
 function ReadmeTemplate({ setMarkdown }) {
   const [page, setPage] = useState(1);
+  const [selectedTags, setSelectedTags] = useState([]);
 
-  const totalPages = Math.ceil(readmeSections.length / ITEMS_PER_PAGE);
+  const filteredSections =
+    selectedTags.length === 0
+      ? readmeSections
+      : readmeSections.filter((sec) => selectedTags.includes(sec.tag));
+
+  const totalPages = Math.ceil(filteredSections.length / ITEMS_PER_PAGE);
   const startIdx = (page - 1) * ITEMS_PER_PAGE;
   const endIdx = startIdx + ITEMS_PER_PAGE;
-  const visibleSections = readmeSections.slice(startIdx, endIdx);
+  const visibleSections = filteredSections.slice(startIdx, endIdx);
 
   const addPage = () => {
     if (page == totalPages) return;
@@ -26,12 +32,33 @@ function ReadmeTemplate({ setMarkdown }) {
     setMarkdown((prevMarkdown) => prevMarkdown + "\n" + template);
   };
 
+  const selectTag = (tag) => {
+    // if (selectedTags.includes(tag)) return;
+    setPage(1);
+    setSelectedTags((prev) =>
+      prev.includes(tag) ? prev.filter((t) => t !== tag) : [...prev, tag]
+    );
+  };
+
   return (
     <>
       <div className="navbar bg-primary flex justify-between shadow-sm h-15">
         <h1 className="text-xl">Templates</h1>
       </div>
       <div className="m-2 h-[50vh]">
+        <div className="w-full flex justify-around">
+          {readmeTags.map((tag, index) => (
+            <button
+              key={index}
+              className={`btn btn-soft btn-sm my-1 ${
+                selectedTags.includes(tag) ? "btn-primary" : ""
+              }`}
+              onClick={() => selectTag(tag)}
+            >
+              {tag}
+            </button>
+          ))}
+        </div>
         <div className="h-4/5">
           <label className="input input-ghost w-full my-2 flex items-center">
             <Search size={16} />
