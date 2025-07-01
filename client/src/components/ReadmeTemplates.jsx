@@ -73,7 +73,10 @@ function ReadmeTemplate({ setMarkdown }) {
               type="search"
               className="grow"
               placeholder="Search"
-              onChange={(e) => setSearch(e.target.value)}
+              onChange={(e) => {
+                setPage(1);
+                setSearch(e.target.value);
+              }}
               style={{ width: "100%" }}
             />
           </label>
