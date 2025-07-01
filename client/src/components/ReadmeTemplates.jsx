@@ -42,23 +42,23 @@ function ReadmeTemplate() {
             {sec.name}
           </button>
         ))}
-      </div>
-      <div className="join flex justify-center mt-2">
-        <button
-          onClick={subPage}
-          className="join-item btn"
-          disabled={page === 1}
-        >
-          <ArrowLeft />
-        </button>
-        <button className="join-item btn">Page {page}</button>
-        <button
-          onClick={addPage}
-          className="join-item btn"
-          disabled={page === totalPages}
-        >
-          <ArrowRight />
-        </button>
+        <div className="join flex justify-center mt-2">
+          <button
+            onClick={subPage}
+            className="join-item btn"
+            disabled={page === 1}
+          >
+            <ArrowLeft />
+          </button>
+          <button className="join-item btn">Page {page}</button>
+          <button
+            onClick={addPage}
+            className="join-item btn"
+            disabled={page === totalPages}
+          >
+            <ArrowRight />
+          </button>
+        </div>
       </div>
     </>
   );
