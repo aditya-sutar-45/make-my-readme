@@ -4,7 +4,7 @@ import { readmeSections } from "../utils/readmeTemplates";
 
 const ITEMS_PER_PAGE = 6;
 
-function ReadmeTemplate() {
+function ReadmeTemplate({ setMarkdown }) {
   const [page, setPage] = useState(1);
 
   const totalPages = Math.ceil(readmeSections.length / ITEMS_PER_PAGE);
@@ -20,6 +20,10 @@ function ReadmeTemplate() {
   const subPage = () => {
     if (page == 1) return;
     setPage((p) => p - 1);
+  };
+
+  const addTemplate = (template) => {
+    setMarkdown((prevMarkdown) => prevMarkdown + "\n" + template);
   };
 
   return (
@@ -39,7 +43,11 @@ function ReadmeTemplate() {
             />
           </label>
           {visibleSections.map((sec, index) => (
-            <button key={index} className="btn my-1 w-full btn-dash">
+            <button
+              key={index}
+              className="btn my-1 w-full btn-dash"
+              onClick={() => addTemplate(sec.content)}
+            >
               {sec.name}
             </button>
           ))}

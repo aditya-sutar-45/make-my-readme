@@ -4,9 +4,8 @@ import MarkdownEditor from "./MarkdownEditor";
 import MarkdowPreview from "./MarkdownPreview";
 import ThemeController from "./controllers/ThemeController";
 
-function ReadmeEditor() {
+function ReadmeEditor({ markdown, setMarkdown }) {
   const editorRef = useRef(null);
-  const [markdown, setMarkdown] = useState("# edit your markdown here....");
   const [isPreview, setIsPreview] = useState(false);
 
   const togglePreview = () => {
