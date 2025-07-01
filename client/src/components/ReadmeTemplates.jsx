@@ -39,7 +39,7 @@ function ReadmeTemplate({ setMarkdown }) {
     setMarkdown((prevMarkdown) => prevMarkdown + "\n" + template);
   };
 
-  const selectTag = (tag) => {
+  const toggleTag = (tag) => {
     // if (selectedTags.includes(tag)) return;
     setPage(1);
     setSelectedTags((prev) =>
@@ -60,7 +60,7 @@ function ReadmeTemplate({ setMarkdown }) {
               className={`btn btn-soft btn-sm my-1 ${
                 selectedTags.includes(tag) ? "btn-primary" : ""
               }`}
-              onClick={() => selectTag(tag)}
+              onClick={() => toggleTag(tag)}
             >
               {tag}
             </button>
