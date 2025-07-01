@@ -2,6 +2,7 @@ import { Code, Eye } from "lucide-react";
 import { useRef, useState } from "react";
 import MarkdownEditor from "./MarkdownEditor";
 import MarkdowPreview from "./MarkdownPreview";
+import ThemeController from "./controllers/ThemeController";
 
 function ReadmeEditor() {
   const editorRef = useRef(null);
@@ -14,15 +15,21 @@ function ReadmeEditor() {
 
   return (
     <>
-      <div className="navbar bg-base-100 flex justify-between shadow-sm">
-        <h1 className="text-xl">{isPreview ? "Preview" : "Editor"}</h1>
-        <label className="toggle text-base-content">
-          <input type="checkbox" onClick={togglePreview} />
-          <Code size={16} />
-          <Eye size={16} />
-        </label>
+      <div className="navbar bg-primary flex justify-between shadow-sm">
+        <fieldset className="fieldset">
+          <legend className="fieldset-label">
+            {isPreview ? "Preview" : "Editor"}
+          </legend>
+          <label className="toggle toggle-accent text-base-content">
+            <input type="checkbox" onClick={togglePreview} />
+            <Eye size={16} />
+            <Code size={16} />
+          </label>
+        </fieldset>
+        <ThemeController />
+        {/* <h1 className="text-xl">{isPreview ? "Preview" : "Editor"}</h1> */}
       </div>
-      <div className="h-full">
+      <div>
         {isPreview ? (
           <MarkdowPreview markdown={markdown} />
         ) : (
