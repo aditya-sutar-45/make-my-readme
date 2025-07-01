@@ -24,7 +24,7 @@ function ReadmeTemplate() {
 
   return (
     <>
-      <div className="navbar bg-primary flex justify-between shadow-sm prose">
+      <div className="navbar bg-primary shadow-sm h-15">
         <h1 className="text-xl">Templates</h1>
       </div>
       <div className="m-2 h-[40vh]">
