@@ -7,10 +7,10 @@ function ThemeController() {
       <input type="checkbox" className="theme-controller" value="nord" />
 
       {/* sun icon */}
-      <Sun className="swap-off" />
+      <Sun size={20} className="swap-off" />
 
       {/* moon icon */}
-      <Moon className="swap-on" />
+      <Moon size={20} className="swap-on" />
     </label>
   );
 }

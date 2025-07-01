@@ -15,7 +15,7 @@ function ReadmeEditor() {
 
   return (
     <>
-      <div className="navbar bg-primary flex justify-between shadow-sm">
+      <div className="navbar bg-primary flex justify-between shadow-sm h-15">
         <fieldset className="fieldset">
           <legend className="fieldset-label">
             {isPreview ? "Preview" : "Editor"}
