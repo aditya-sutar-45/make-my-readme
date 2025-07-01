@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { ArrowLeft, ArrowRight, Search } from "lucide-react";
 import { readmeSections, readmeTags } from "../utils/readmeTemplates";
 
@@ -7,11 +7,18 @@ const ITEMS_PER_PAGE = 6;
 function ReadmeTemplate({ setMarkdown }) {
   const [page, setPage] = useState(1);
   const [selectedTags, setSelectedTags] = useState([]);
+  const [search, setSearch] = useState("");
 
-  const filteredSections =
+  const filterSectionTags =
     selectedTags.length === 0
       ? readmeSections
       : readmeSections.filter((sec) => selectedTags.includes(sec.tag));
+
+  const filteredSections = useMemo(() => {
+    return filterSectionTags.filter((sec) => {
+      return sec.name.toLocaleLowerCase().includes(search.toLocaleLowerCase());
+    });
+  }, [filterSectionTags, search]);
 
   const totalPages = Math.ceil(filteredSections.length / ITEMS_PER_PAGE);
   const startIdx = (page - 1) * ITEMS_PER_PAGE;
@@ -66,6 +73,7 @@ function ReadmeTemplate({ setMarkdown }) {
               type="search"
               className="grow"
               placeholder="Search"
+              onChange={(e) => setSearch(e.target.value)}
               style={{ width: "100%" }}
             />
           </label>
