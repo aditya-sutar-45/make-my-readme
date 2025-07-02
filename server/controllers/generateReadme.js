@@ -8,7 +8,6 @@ export const generateReadme = catchAsync(async (req, res) => {
   if (!userPrompt) throw new ExpressError("prompt is empty!");
   if (userPrompt.length < 25)
     throw new ExpressError("prompt lenght too small!");
-
   const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API });
   const formatedPrompt = `
     The user has described their project as follows: 
@@ -31,6 +30,7 @@ export const generateReadme = catchAsync(async (req, res) => {
 
   res.setHeader("Content-Type", "text/plain; charset=utf-8");
   res.setHeader("Cache-Control", "no-cache");
+  res.setHeader("Access-Control-Allow-Origin", "*");
 
   for await (const chunk of response) {
     res.write(chunk.text);
