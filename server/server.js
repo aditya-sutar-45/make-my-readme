@@ -2,11 +2,18 @@ import express, { json } from "express";
 import { ExpressError } from "./utils/ExpressError.js";
 import "dotenv/config";
 import { generateReadme } from "./controllers/generateReadme.js";
+import cors from "cors";
 
 const PORT = process.env.PORT || 3000;
 
 const app = express();
 
+app.use(
+  cors({
+    origin: "http://localhost:5173",
+    credentials: true,
+  })
+);
 app.use(json());
 
 app.get("/", (req, res) => {
