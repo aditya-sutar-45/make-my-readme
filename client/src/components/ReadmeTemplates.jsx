@@ -1,10 +1,14 @@
 import { useMemo, useState } from "react";
 import { ArrowLeft, ArrowRight, Search } from "lucide-react";
 import { readmeSections, readmeTags } from "../utils/readmeTemplates";
+import Generate from "./Generate";
+import { useMarkdown } from "../hooks/useMarkdown";
 
 const ITEMS_PER_PAGE = 6;
 
-function ReadmeTemplate({ setMarkdown }) {
+function ReadmeTemplate() {
+  const { setMarkdown } = useMarkdown();
+
   const [page, setPage] = useState(1);
   const [selectedTags, setSelectedTags] = useState([]);
   const [search, setSearch] = useState("");
@@ -108,6 +112,7 @@ function ReadmeTemplate({ setMarkdown }) {
           </button>
         </div>
       </div>
+      <Generate />
     </>
   );
 }
