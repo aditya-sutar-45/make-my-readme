@@ -8,12 +8,17 @@ const PORT = process.env.PORT || 3000;
 
 const app = express();
 
-app.use(
-  cors({
-    origin: ["http://localhost:5173", "https://make-my-readme.onrender.com"],
-    credentials: true,
-  })
-);
+// app.use(
+//   cors({
+//     origin: [
+//       "http://localhost:5173",
+//       "https://make-my-readme.onrender.com",
+//       "https://make-my-readme.vercel.app/",
+//     ],
+//     credentials: true,
+//   })
+// );
+app.use(cors());
 app.use(json());
 
 app.get("/", (req, res) => {
