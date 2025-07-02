@@ -1,10 +1,14 @@
 import { useMemo, useState } from "react";
 import { ArrowLeft, ArrowRight, Search } from "lucide-react";
 import { readmeSections, readmeTags } from "../utils/readmeTemplates";
+import Generate from "./Generate";
+import { useMarkdown } from "../hooks/useMarkdown";
 
 const ITEMS_PER_PAGE = 6;
 
-function ReadmeTemplate({ setMarkdown }) {
+function ReadmeTemplate() {
+  const { setMarkdown } = useMarkdown();
+
   const [page, setPage] = useState(1);
   const [selectedTags, setSelectedTags] = useState([]);
   const [search, setSearch] = useState("");
@@ -108,23 +112,7 @@ function ReadmeTemplate({ setMarkdown }) {
           </button>
         </div>
       </div>
-      <div className="h-[50vh] w-full">
-        <div className="h-3/12">
-          <h1 className="text-2xl text-primary text-center mt-5">
-            Generate a README.md
-          </h1>
-          <p className="m-2">
-            Describe the project you want the README.md file to be generated for
-            and you will get a response!
-          </p>
-        </div>
-        <div className="h-[50%] w-full flex justify-center items-center">
-          <textarea
-            placeholder="Primary"
-            className="textarea text-secondary resize-none h-full w-full m-3"
-          ></textarea>
-        </div>
-      </div>
+      <Generate />
     </>
   );
 }

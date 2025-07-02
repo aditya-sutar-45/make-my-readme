@@ -4,7 +4,7 @@ import MarkdownEditor from "./MarkdownEditor";
 import MarkdowPreview from "./MarkdownPreview";
 import ThemeController from "./controllers/ThemeController";
 
-function ReadmeEditor({ markdown, setMarkdown }) {
+function ReadmeEditor() {
   const editorRef = useRef(null);
   const [isPreview, setIsPreview] = useState(false);
 
@@ -30,13 +30,9 @@ function ReadmeEditor({ markdown, setMarkdown }) {
       </div>
       <div className="w-[90%] mx-auto">
         {isPreview ? (
-          <MarkdowPreview markdown={markdown} />
+          <MarkdowPreview />
         ) : (
-          <MarkdownEditor
-            editorRef={editorRef}
-            markdown={markdown}
-            setMarkdown={setMarkdown}
-          />
+          <MarkdownEditor editorRef={editorRef} />
         )}
       </div>
     </>

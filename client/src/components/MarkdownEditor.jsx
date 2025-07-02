@@ -1,6 +1,9 @@
 import { Editor } from "@monaco-editor/react";
+import { useMarkdown } from "../hooks/useMarkdown";
 
-function MarkdownEditor({ markdown, setMarkdown, editorRef }) {
+function MarkdownEditor({ editorRef }) {
+  const { markdown, setMarkdown } = useMarkdown();
+
   const handleEditorChange = (value) => {
     // console.log(markdown);
     setMarkdown(value);
