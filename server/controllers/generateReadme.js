@@ -28,9 +28,10 @@ export const generateReadme = catchAsync(async (req, res) => {
     },
   });
 
-  res.setHeader("Content-Type", "text/plain; charset=utf-8");
-  res.setHeader("Cache-Control", "no-cache");
-  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.writeHead(200, {
+    "Content-Type": "text/plain; charset=utf-8",
+    "Cache-Control": "no-cache",
+  });
 
   for await (const chunk of response) {
     res.write(chunk.text);
