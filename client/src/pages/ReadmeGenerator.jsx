@@ -5,11 +5,11 @@ import MarkdownProvider from "../contexts/MarkdownProvider";
 function ReadmeGenerator() {
   return (
     <MarkdownProvider>
-      <div className="h-screen w-screen grid grid-rows-1 grid-cols-3 gap-2 rounded-field">
-        <div className="h-full border-1 overflow-hidden rounded-field">
+      <div className="h-screen w-screen grid grid-rows-1 grid-cols-3 gap-2">
+        <div className="h-full bg-primary overflow-hidden">
           <ReadmeTemplate />
         </div>
-        <div className="h-full col-span-2 border-1 overflow-hidden rounded-field">
+        <div className="h-full col-span-2 bg-primary overflow-hidden">
           <ReadmeEditor />
         </div>
       </div>

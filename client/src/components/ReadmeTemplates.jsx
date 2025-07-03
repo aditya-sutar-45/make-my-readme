@@ -53,16 +53,18 @@ function ReadmeTemplate() {
 
   return (
     <>
-      <div className="navbar bg-primary flex justify-between shadow-sm h-15">
-        <h1 className="text-xl">Templates</h1>
+      <div className="navbar bg-secondary flex justify-between shadow-sm h-15">
+        <h1 className="text-2xl font-space-mono font-normal">
+          MakeMy<span className="font-bold">README</span>
+        </h1>
       </div>
-      <div className="m-2 h-[50vh]">
+      <div className="m-2 h-[50vh] font-work-sans">
         <div className="w-full flex justify-around">
           {readmeTags.map((tag, index) => (
             <button
               key={index}
               className={`btn btn-soft btn-sm my-1 ${
-                selectedTags.includes(tag) ? "btn-primary" : ""
+                selectedTags.includes(tag) ? "btn-primary text-accent" : ""
               }`}
               onClick={() => toggleTag(tag)}
             >
@@ -71,7 +73,7 @@ function ReadmeTemplate() {
           ))}
         </div>
         <div className="h-4/5">
-          <label className="input input-ghost w-full my-2 flex items-center">
+          <label className="input input-accent bg-secondary text-secondary-content w-full my-2 flex items-center">
             <Search size={16} />
             <input
               type="search"
@@ -97,15 +99,15 @@ function ReadmeTemplate() {
         <div className="join flex justify-center mt-2">
           <button
             onClick={subPage}
-            className="join-item btn"
+            className="join-item btn btn-square"
             disabled={page === 1}
           >
             <ArrowLeft />
           </button>
-          <button className="join-item btn">Page {page}</button>
+          <button className="join-item btn btn-square">{page}</button>
           <button
             onClick={addPage}
-            className="join-item btn"
+            className="join-item btn btn-square"
             disabled={page === totalPages}
           >
             <ArrowRight />

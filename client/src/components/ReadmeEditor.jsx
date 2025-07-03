@@ -1,10 +1,12 @@
-import { Code, Eye } from "lucide-react";
+import { Code, Copy, Download, Eye } from "lucide-react";
 import { useRef, useState } from "react";
 import MarkdownEditor from "./MarkdownEditor";
 import MarkdowPreview from "./MarkdownPreview";
 import ThemeController from "./controllers/ThemeController";
+import { useMarkdown } from "../hooks/useMarkdown";
 
 function ReadmeEditor() {
+  const { markdown } = useMarkdown();
   const editorRef = useRef(null);
   const [isPreview, setIsPreview] = useState(false);
 
@@ -12,11 +14,22 @@ function ReadmeEditor() {
     setIsPreview(!isPreview);
   };
 
+  const copyToClipboard = () => {
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard
+        .writeText(markdown)
+        .then(() => alert("copied to clipboard!"))
+        .catch(() => alert("failed to copy!"));
+    } else {
+      alert("clipboard api not supported by your browser :(");
+    }
+  };
+
   return (
     <>
-      <div className="navbar bg-primary flex justify-between shadow-sm h-15">
+      <div className="navbar bg-secondary flex justify-between shadow-sm h-15">
         <fieldset className="fieldset">
-          <legend className="fieldset-label text-base text-white">
+          <legend className="fieldset-label text-base text-white font-work-sans">
             {isPreview ? "Preview" : "Editor"}
           </legend>
           <label className="toggle toggle-accent text-base-content">
@@ -25,7 +38,18 @@ function ReadmeEditor() {
             <Code size={16} />
           </label>
         </fieldset>
-        <ThemeController />
+        <div className="join">
+          <button
+            className="join-item btn btn-square"
+            onClick={copyToClipboard}
+          >
+            <Copy size={16} />
+          </button>
+          <button className="join-item btn btn-accent font-work-sans rounded-r-field">
+            <Download size={16} /> Download
+          </button>
+          <ThemeController />
+        </div>
         {/* <h1 className="text-xl">{isPreview ? "Preview" : "Editor"}</h1> */}
       </div>
       <div className="w-[90%] mx-auto">
