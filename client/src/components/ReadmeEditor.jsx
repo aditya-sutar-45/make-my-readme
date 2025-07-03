@@ -25,6 +25,18 @@ function ReadmeEditor() {
     }
   };
 
+  const downloadReadme = () => {
+    const blob = new Blob([markdown]);
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "README.md";
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  };
+
   return (
     <>
       <div className="navbar bg-secondary flex justify-between shadow-sm h-15">
@@ -45,7 +57,10 @@ function ReadmeEditor() {
           >
             <Copy size={16} />
           </button>
-          <button className="join-item btn btn-accent font-work-sans rounded-r-field">
+          <button
+            className="join-item btn btn-accent font-work-sans rounded-r-field"
+            onClick={downloadReadme}
+          >
             <Download size={16} /> Download
           </button>
           <ThemeController />
