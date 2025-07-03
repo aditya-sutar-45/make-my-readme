@@ -1,12 +1,13 @@
-import { Code, Copy, Download, Eye } from "lucide-react";
+import { BrushCleaning, Code, Copy, Download, Eye, X } from "lucide-react";
 import { useRef, useState } from "react";
 import MarkdownEditor from "./MarkdownEditor";
 import MarkdowPreview from "./MarkdownPreview";
 import ThemeController from "./controllers/ThemeController";
 import { useMarkdown } from "../hooks/useMarkdown";
+import toast from "react-hot-toast";
 
 function ReadmeEditor() {
-  const { markdown } = useMarkdown();
+  const { markdown, setMarkdown } = useMarkdown();
   const editorRef = useRef(null);
   const [isPreview, setIsPreview] = useState(false);
 
@@ -18,10 +19,10 @@ function ReadmeEditor() {
     if (navigator.clipboard && navigator.clipboard.writeText) {
       navigator.clipboard
         .writeText(markdown)
-        .then(() => alert("copied to clipboard!"))
-        .catch(() => alert("failed to copy!"));
+        .then(() => toast.success("copied to clipboard!"))
+        .catch(() => toast.error("failed to copy!"));
     } else {
-      alert("clipboard api not supported by your browser :(");
+      toast.error("clipboard api not supported by your browser :(");
     }
   };
 
@@ -35,6 +36,10 @@ function ReadmeEditor() {
     a.click();
     document.body.removeChild(a);
     URL.revokeObjectURL(url);
+  };
+
+  const clearMarkdown = () => {
+    setMarkdown("");
   };
 
   return (
@@ -58,11 +63,34 @@ function ReadmeEditor() {
             <Copy size={16} />
           </button>
           <button
-            className="join-item btn btn-accent font-work-sans rounded-r-field"
+            className="join-item btn btn-accent font-work-sans"
             onClick={downloadReadme}
           >
             <Download size={16} /> Download
           </button>
+          <button
+            className="btn btn-accent rounded-r-field"
+            onClick={() =>
+              document.getElementById("clearMarkdownModal").showModal()
+            }
+          >
+            <BrushCleaning size={16} /> Clear
+          </button>
+          <dialog id="clearMarkdownModal" className="modal">
+            <div className="modal-box">
+              <h3 className="font-bold text-lg">Are you sure?</h3>
+              <p className="py-4">This will clear all your markdown!</p>
+              <form method="dialog">
+                {/* if there is a button in form, it will close the modal */}
+                <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">
+                  <X />
+                </button>
+                <button className="btn btn-warning" onClick={clearMarkdown}>
+                  Clear
+                </button>
+              </form>
+            </div>
+          </dialog>
           <ThemeController />
         </div>
         {/* <h1 className="text-xl">{isPreview ? "Preview" : "Editor"}</h1> */}
