@@ -60,14 +60,14 @@ To set up the project locally, follow these steps:
 ### Frontend Setup
 1.  Navigate to the frontend directory:
     ```bash
-    cd ../frontend
+    cd ../client
     ```
 2.  Install dependencies:
     ```bash
     npm install
     # or yarn install
     ```
-3.  Create a `.env` file in the `frontend` directory if needed (e.g., for API base URL).
+3.  Create a `.env` file in the `client` directory if needed (e.g., for API base URL).
     ```
     VITE_BASE_URL=http://localhost:3000
     ```
