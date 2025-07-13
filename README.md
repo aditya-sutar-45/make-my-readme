@@ -97,5 +97,5 @@ Contributions are welcome! If you have suggestions for improvements or new featu
 
 ## Contact 📧
 For any questions or inquiries, please reach out to:
-*   Your Name - [your.email@example.com](mailto:your.email@example.com)
-*   Project Link: [https://github.com/your-username/make-my-readme](https://github.com/your-username/make-my-readme)
+*   Your Name - [aditya1.sutar@gmail.com](mailto:aditya1.sutar@gmail.com)
+*   Project Link: [https://github.com/aditya-sutar-45/make-my-readme](https://github.com/aditya-sutar-45/make-my-readme)
