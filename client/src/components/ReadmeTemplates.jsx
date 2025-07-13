@@ -3,6 +3,7 @@ import { ArrowLeft, ArrowRight, Search } from "lucide-react";
 import { readmeSections, readmeTags } from "../utils/readmeTemplates";
 import Generate from "./Generate";
 import { useMarkdown } from "../hooks/useMarkdown";
+import { Link } from "react-router-dom";
 
 const ITEMS_PER_PAGE = 6;
 
@@ -54,9 +55,9 @@ function ReadmeTemplate() {
   return (
     <>
       <div className="navbar bg-secondary flex justify-between shadow-sm h-15">
-        <h1 className="text-2xl font-space-mono font-normal">
+        <Link to={"/"} className="text-2xl font-space-mono font-normal">
           MakeMy<span className="font-bold">README</span>
-        </h1>
+        </Link>
       </div>
       <div className="m-2 h-[50vh] font-work-sans">
         <div className="w-full flex justify-around">
