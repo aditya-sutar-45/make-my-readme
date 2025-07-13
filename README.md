@@ -3,7 +3,7 @@
 ## Description
 `make-my-readme` is an intuitive web application designed to simplify the process of generating professional `README.md` files. Users can effortlessly create comprehensive READMEs by providing a single prompt, leveraging AI capabilities to structure and populate the content. The platform also offers a robust live preview, an integrated editor for fine-tuning, and a collection of premade templates to kickstart the documentation process. Once satisfied, users can easily download or copy their generated READMEs.
 
-## Screenshot
+## Screenshots
 ![Screenshot of make-my-readme-dark](./client/public/readme-dark.png)
 ![Screenshot of make-my-readme-light](./client/public/readme-light.png)
 
