@@ -56,7 +56,8 @@ function ReadmeTemplate() {
     <>
       <div className="navbar bg-secondary flex justify-between shadow-sm h-15">
         <Link to={"/"} className="text-2xl font-space-mono font-normal">
-          MakeMy<span className="font-bold">README</span>
+          MakeMy
+          <span className="font-bold">README</span>
         </Link>
       </div>
       <div className="m-2 h-[50vh] font-work-sans">
