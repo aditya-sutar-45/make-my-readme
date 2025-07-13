@@ -5,6 +5,7 @@ import App from "./App.jsx";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import ReadmeGenerator from "./pages/ReadmeGenerator.jsx";
 import { Toaster } from "react-hot-toast";
+import ThemeProvider from "./contexts/ThemeProvider.jsx";
 
 const router = createBrowserRouter([
   { path: "/", element: <App /> },
@@ -13,7 +14,9 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <Toaster />
-    <RouterProvider router={router} />
+    <ThemeProvider>
+      <Toaster />
+      <RouterProvider router={router} />
+    </ThemeProvider>
   </StrictMode>
 );

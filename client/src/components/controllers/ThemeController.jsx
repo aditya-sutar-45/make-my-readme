@@ -1,17 +1,19 @@
 import { Moon, Sun } from "lucide-react";
+import { useTheme } from "../../hooks/useTheme";
 
 function ThemeController() {
+  const { theme, setTheme } = useTheme();
+
+  const toggleTheme = () => {
+    const newTheme = theme === "nord" ? "black" : "nord";
+    setTheme(newTheme);
+    document.documentElement.setAttribute("data-theme", newTheme);
+  };
+
   return (
-    <label className="swap swap-rotate mx-2">
-      {/* this hidden checkbox controls the state */}
-      <input type="checkbox" className="theme-controller" value="nord" />
-
-      {/* sun icon */}
-      <Sun size={20} className="swap-off" />
-
-      {/* moon icon */}
-      <Moon size={20} className="swap-on" />
-    </label>
+    <button onClick={toggleTheme} className="mx-2 btn btn-ghost btn-circle">
+      {theme === "black" ? <Sun size={20} /> : <Moon size={20} />}
+    </button>
   );
 }
 
