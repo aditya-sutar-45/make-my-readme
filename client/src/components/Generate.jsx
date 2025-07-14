@@ -45,6 +45,7 @@ function Generate() {
           name="my_tabs_6"
           className="tab"
           aria-label="Generate"
+          defaultChecked
         />
         <div className="tab-content bg-base-100 border-base-300">
           <div className="h-full w-full flex justify-center items-center flex-wrap">
@@ -73,7 +74,6 @@ function Generate() {
           name="my_tabs_6"
           className="tab"
           aria-label="Enhance"
-          defaultChecked
         />
         <div className="tab-content bg-base-100 border-base-300">
           <div className="h-full w-full flex justify-center items-center flex-wrap">
