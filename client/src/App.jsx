@@ -32,7 +32,7 @@ function App() {
               projects with ease. Clean design, live preview, one-click
               download.
             </p>
-            <div className="mockup-browser border-base-300 border w-full aspect-video py-3">
+            <div className="mockup-browser border border-secondary-content w-full aspect-video py-3">
               <div className="mockup-browser-toolbar">
                 <div className="input">{window.location.href}</div>
               </div>
